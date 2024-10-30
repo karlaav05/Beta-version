@@ -1,0 +1,21 @@
+<%- include("partials/2header"); -%>
+<div class="container">
+    <h1>Wordle Cognitive </h1>
+    <div class="board">
+        <div class="row">
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+        </div>
+        
+    </div>
+    <input type="text" id="guessInput" maxlength="10" placeholder="Type your guess" autofocus>
+    <button onclick="checkGuess()">Submit Guess</button>
+</div>
+
+<script src="../public/games/Cognitive/script.js"></script>
+
+<%- include("partials/2footer"); -%>

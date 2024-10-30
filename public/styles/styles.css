@@ -1,0 +1,232 @@
+@import url('https://fonts.googleapis.com/css?family=Special+Elite');
+
+/* Base Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #b4bbed;
+    margin: 0;
+    padding: 0;
+}
+
+p, ul, blockquote {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #333;
+}
+
+h2 {
+    color: #333;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+h3 {
+    color: #555;
+    font-size: 1.5rem;
+    margin-top: 1rem;
+}
+
+a {
+    color: #4f7090;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+    color: #415a72;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #333;
+    color: white;
+}
+
+.navbar-brand {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.navbar-toggler {
+    border: none;
+}
+
+.navbar-nav .nav-link, .dropdown-item {
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+.navbar-nav .nav-link:hover, .dropdown-item:hover {
+    color: #415367;
+    transform: scale(1.05);
+}
+
+/* Container and Section */
+.container {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+section {
+    margin-top: 40px;
+}
+
+section h2 {
+    color: #b6b5f4;
+    margin-bottom: 1rem;
+}
+
+section a {
+    display: inline-block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+/* Hero Section */
+.hero-section {
+    background-image: url('path/to/your/hero-image.jpg');
+    background-size: cover;
+    background-position: center;
+    padding: 100px 20px;
+    color: #d2d1fa;
+}
+
+/* Quote and Blockquote Styling */
+.blockquote, .custom-quote {
+    font-style: italic;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.1); /* Light overlay */
+    color: #f8f9fa;
+    border-left: 4px solid white;
+}
+
+.blockquote p, .custom-quote p {
+    font-size: 1.25rem;
+    margin: 0;
+}
+
+.blockquote footer, .custom-quote footer {
+    font-size: 1rem;
+    color: #dcdcdc;
+    text-align: right;
+}
+
+/* Quote Section */
+.quote-section {
+    background: #007BFF;
+    color: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Info Card Styling */
+.info-card {
+    background: #d2d1fa;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.info-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+.info-card h2 {
+    color: #eef2f5;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+.info-card h3 {
+    color: #333;
+    margin-top: 1rem;
+    font-weight: 500;
+}
+.info-card ul {
+    padding-left: 1.2rem;
+}
+
+.animated-button {
+    display: inline-block;
+    padding: 12px 25px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #9190f0;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.animated-button:hover {
+    background-color: #9190f0;
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+#back-to-top {
+    position: fixed;
+    bottom: 20px; 
+    right: 20px; 
+    background-color: #90e0ef; 
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 24px; 
+    cursor: pointer;
+    display: none; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); 
+    transition: background-color 0.3s, transform 0.3s; 
+}
+
+#back-to-top:hover {
+    background-color: #48cae4; 
+    transform: translateY(-3px); 
+}
+
+.title-container {
+    text-align: center;
+}
+
+.icon-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px; 
+    margin-bottom: 10px; 
+}
+
+.icon {
+    width: 40px; /* Adjust icon size */
+    height: auto;
+}
+
+
+/* Page Spacing */
+.my-5 {
+    margin-top: 50px !important;
+    margin-bottom: 50px !important;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    h3 {
+        font-size: 1.2rem;
+    }
+
+    p, ul, blockquote {
+        font-size: 0.9rem;
+    }
+    .blockquote, .custom-quote {
+        font-size: 1.2rem;
+    }
+}

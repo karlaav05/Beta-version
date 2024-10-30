@@ -1,0 +1,101 @@
+/* General Layout */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f3f4f6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    text-align: center;
+    width: 300px;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+}
+
+/* Title */
+h1 {
+    color: #333333;
+    margin: 10px 0 20px;
+    font-size: 24px;
+}
+
+/* Game Board */
+.board {
+    display: grid;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.row {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 5px;
+}
+
+.cell {
+    width: 30px;
+    height: 30px;
+    border: 2px solid #e0e0e0;
+    border-radius: 4px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #333333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Feedback Colors */
+.correct {
+    background-color: #4caf50;
+    color: #ffffff;
+    border-color: #4caf50;
+    transform: scale(1.1);
+}
+
+.present {
+    background-color: #ffeb3b;
+    color: #333333;
+    border-color: #ffeb3b;
+    transform: scale(1.1);
+}
+
+.absent {
+    background-color: #e0e0e0;
+    color: #aaaaaa;
+}
+
+/* Input and Button */
+#guessInput {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 2px solid #333333;
+    border-radius: 4px;
+    font-size: 16px;
+    text-align: center;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #333333;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #555555;
+}

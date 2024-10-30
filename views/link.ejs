@@ -1,0 +1,195 @@
+<%- include("partials/header"); -%>
+    <section> 
+        <table id="table" cellspacing = "0"></table>
+        <div class = "across">
+            <h2><i> Across </i></h2>
+            <ul>
+                <li> 2. People with Visual impairment usually have difficulty —-- oneself in new spaces. </li>
+                <li> 5. Type of blindness that makes it hard to distiguish or see things with clarity. </li>
+                <li> 6. People with Visual impairment have difficulty——— people, objects or spaces. </li>
+                
+            </ul>
+        </div>
+
+        <div class = "down">
+            <h2><i> Down </i></h2>
+            <ul>
+                <li>1. Chronic disease that can cause this disability.</li>
+                <li>3. Type of blindness where you see nothing at all or have only a slight perception of light</li>
+                <li>4. Visual impairment can also be —---- from your family members.</li>
+            </ul>
+        </div>
+    </section>
+
+    
+    <button onclick="key_check()" > CHECK </button>
+    <!--<button onclick="color_cleark()" > Erase the wrongs </button>-->
+
+
+
+<script>
+    //w- White
+    // b- Black
+    var values = ["bbwbbbbbbbbbbbbbbbbbb", "wwwwwwwwwbbbbbbbbbbbb", "bbwbbwbbbbbbbbbbbbbbb",
+                  "bbwbbwbbbbbbbbbbbbbbb", "wbwbwwwwwwwwwwwwwwwww", "wbwbbwbbbbbbbbbbbbbbb",
+                  "wbwbbwbbbbbbbbbbbbbbb", "wbwbbwbbbbbbbbbbbbbbb", "wbbbbwbbbbbbbbbbbbbbb",
+                  "wwwwwwwwwwwbbbbbbbbbb", "wbbbbwbbbbbbbbbbbbbbb", "wbbbbwbbbbbbbbbbbbbbb",
+                  "wbbbbwbbbbbbbbbbbbbbb", "bbbbbwbbbbbbbbbbbbbbb", "bbbbbwbbbbbbbbbbbbbbb",
+                  "bbbbbwbbbbbbbbbbbbbbb" ]; 
+
+    var ans_key = ["--D------------------", "ORIENTING------------", "--A--O---------------",
+                   "--B--T---------------", "I-E-PARTIAL BLINDNESS", "N-T--L---------------",
+                   "H-E-- ---------------", "E-S--B---------------", "R----L---------------",
+                   "IDENTIFYING----------", "T----N---------------", "E----D---------------",
+                   "D----N---------------", "-----E---------------", "-----S---------------",
+                   "-----S---------------"];
+
+    var total_rows=values.length;
+    var total_cols=values[0].length;
+
+    var spans_value={"0,2":"1", "1,0":"2", "1,5":"3", "4,0":"4", "4,4":"5", "9,0":"6"}; //valores (coordenadas) donde van a ir esos numeros
+    var current=null;
+
+    function createFrameBoxes(){
+        var boxes= "";
+        for(let i = 0; i <values.length; i++){
+            boxes+= "<tr>";
+            for(let j = 0; j< values[i].length; j++){ //13
+                var s=spans_value[i+","+j] ?? "";
+                boxes+=`<th onclick='myclick(this)' row='${i}' col='${j}' class="${values[i][j]}"><span>${s}</span><b></b></th>`;
+            }
+            boxes+="</tr>"
+        }
+        document.getElementById("table").innerHTML=boxes;
+    }
+
+    createFrameBoxes();
+
+    function myclick(box){
+        if(box.classList.contains("w")){
+            var row=box.getAttribute("row");
+            var col=box.getAttribute("col");
+            if(current!=null){
+                current.style.background="transparent";
+            }
+
+            current=box;
+            current.style.background="purple";
+        }
+    }
+
+    document.body.onkeyup=function(event){
+        if(current!=null){
+            //console.log(event);
+
+
+            if(event.keyCode>= 37 && event.keyCode<=40){
+                nextmover(event.keyCode);
+            }
+
+            if(event.keyCode>=65 && event.keyCode <=90){
+                current.querySelector("b").innerHTML=event.key.toUpperCase();
+                nextmover(39); //right?
+            }
+
+            if(event.keyCode==8 | event.keyCode==46){
+                current.querySelector("b").innerHTML="";
+            }
+        }
+    }
+
+    function nextmover(code){
+        var row = parseInt(current.getAttribute("row"));
+        var col = parseInt(current.getAttribute("col"));
+
+        switch(code){
+            case 37: //left
+                col = col == 0 ? total.rows-1 : col - 1;
+                break;
+                
+            case 38: //top
+                row = row == 0 ? total_cols-1 : row - 1;
+                break;
+                
+            case 39: //right
+                col = col == total_cols-1 ? 0 : col + 1;
+                break;
+
+            case 40: //bottom
+                row = row == total_rows-1 ? 0 : row + 1;
+                break;
+
+            default:
+                break;
+        }
+        if(current.classList.contains("w")){
+            current.style.background="transparent";
+        }
+
+        
+        current= document.querySelectorAll("tr")[row].querySelectorAll("th")[col];
+
+        if(current.classList.contains("b")){
+            nextmover(code);
+        }
+        else{
+            current.style.background="purple";
+        }   
+
+    }
+
+
+    var red=[];
+    var green=[];
+
+
+    function key_check(){
+        
+        red.splice(0);
+        green.splice(0);
+
+        var whites=document.querySelectorAll(".w");
+        //console.log(whites);
+        // var blanks = 0;
+        whites.forEach(element => {
+            var row = element.getAttribute("row");
+            var col = element.getAttribute("col");
+            var text = element.querySelector("b").innerHTML;
+            if(text.length>0){
+                console.log(row, col, text,ans_key[row][col]);
+                if(text==ans_key[row][col]){
+                    element.style.background="green";
+                    green.push(element);
+                }
+                else{
+                    element.style.background="red";
+                    red.push(element);
+                }
+            }
+        });
+        //console.log(blanks);
+
+        if(green.length == whites.length){
+            console.log("Well done! :D");
+        }
+    }
+
+    function color_clear(){
+        red.forEach(element =>{
+            element.style.background = "transparent";
+            element.querySelector("b").innerHTML="";
+        });
+
+        green.forEach(element =>{
+            element.style.background = "transparent";
+        });
+
+        console.log("WRONG!",red);
+        console.log("YES!", green)
+
+        red.splice(0);
+        green.splice(0);
+    }
+</script>
+
+<%- include("partials/footer"); -%>
